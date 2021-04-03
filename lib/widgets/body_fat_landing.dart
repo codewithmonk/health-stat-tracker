@@ -22,7 +22,7 @@ class BodyFatLanding extends StatelessWidget {
                   ),
                   borderRadius: BorderRadius.circular(30)
                 ),
-                child: Center(child: LineChartSample1()
+                child: Center(child: LineChartSample1("Body Fat")
                 ),
               ),
               Card(

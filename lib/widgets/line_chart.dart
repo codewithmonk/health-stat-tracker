@@ -3,16 +3,15 @@ import 'package:flutter/material.dart';
 
 class LineChartSample1 extends StatefulWidget {
   @override
+  String graphName;
+  LineChartSample1(this.graphName);
   State<StatefulWidget> createState() => LineChartSample1State();
 }
 
 class LineChartSample1State extends State<LineChartSample1> {
-  bool isShowingMainData;
-
   @override
   void initState() {
     super.initState();
-    isShowingMainData = true;
   }
 
   @override
@@ -28,14 +27,8 @@ class LineChartSample1State extends State<LineChartSample1> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                const SizedBox(
-                  height: 37,
-                ),
-                const SizedBox(
-                  height: 4,
-                ),
-                const Text(
-                  'BMI',
+                Text(
+                  widget.graphName,
                   style: TextStyle(
                       color: Colors.red,
                       fontSize: 32,
@@ -60,17 +53,6 @@ class LineChartSample1State extends State<LineChartSample1> {
                 ),
               ],
             ),
-            IconButton(
-              icon: Icon(
-                Icons.refresh,
-                color: Colors.white.withOpacity(isShowingMainData ? 1.0 : 0.5),
-              ),
-              onPressed: () {
-                setState(() {
-                  isShowingMainData = !isShowingMainData;
-                });
-              },
-            )
           ],
         ),
       ),
