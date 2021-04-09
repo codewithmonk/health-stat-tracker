@@ -1,10 +1,12 @@
 import 'dart:io';
 
-import 'package:body_fat_tracker/widgets/body_fat_landing.dart';
-import 'package:body_fat_tracker/widgets/buttons.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:body_fat_tracker/widgets/bmi_landing.dart';
+import 'package:flutter/material.dart';
+
+import './round_edge_container.dart';
+import './custom_buttons.dart';
+import './bmi_landing.dart';
+import './body_fat_landing.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -21,50 +23,49 @@ class HomePage extends StatelessWidget {
           MaterialPageRoute(builder: (context) => BMILanding())
       );
     }
-    Widget pageBody = Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Container(
-              width: 300,
-              height: 250,
-              child: Center(child: Text("Hi")),
-              margin: EdgeInsets.all(15.0),
-              decoration: BoxDecoration(
-                  border: Border.all(
-                      color: Colors.red,
-                      width: 3
-                  ),
-                  borderRadius: BorderRadius.all(Radius.circular(60))
-              ),
-            ),
-            Center(
-              child: Text(
-                "Motivation",
-                style: TextStyle(
-                    color: Colors.red,
-                    fontSize: 20
-                ),
-              ),
-            ),
-          ],
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 10),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              ButtonWidget("BMI", bmiNavigator),
-              ButtonWidget("Body Fat", bodyFatNavigator)
+    Widget pageBody = Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget> [
+          Column(
+            children: <Widget> [
+              RoundEdgeContainer(const Text("Hi")),
             ],
           ),
-        )
-      ],
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 25.0),
+            child: Column(
+              children: [
+                Row(
+                  children: <Widget> [
+                    ButtonWidget("BMI", bmiNavigator),
+                    ButtonWidget("Body Fat", bodyFatNavigator)
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: const Text(
+                      "crafted by TheMonkLabs",
+                    style: TextStyle(
+                      fontSize: 12
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
     );
-    return Platform.isIOS ? CupertinoPageScaffold(child: pageBody) :  Scaffold(body: pageBody);
+
+    return SafeArea(
+      child: Platform.isIOS
+          ? CupertinoPageScaffold(
+              child: pageBody
+            )
+          : Scaffold(
+              body: pageBody,
+            ),
+    );
   }
 }

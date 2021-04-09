@@ -1,4 +1,6 @@
-import 'package:body_fat_tracker/classes/user.dart';
+import 'package:body_fat_tracker/models/user.dart';
+
+
 
 class BMI{
   User user;
@@ -20,7 +22,8 @@ class BMI{
     } else{
       height = foot * 0.3048 + inches * 0.0254;
       weight = 0.453592 * pounds;
-      double bmi = weight / height * height;
+      double bmi = weight / (height * height);
+      print(bmi);
       return bmi;
     }
   }

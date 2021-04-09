@@ -9,44 +9,34 @@ class ButtonWidget extends StatelessWidget {
   ButtonWidget(this.buttonLabel, this.buttonFunction);
   @override
   Widget build(BuildContext context) {
-    return Platform.isIOS ? Expanded(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: CupertinoButton(
-          onPressed: this.buttonFunction,
-          color: Colors.red,
-          child: FittedBox(
-            child: Text(
-                this.buttonLabel,
-              style: TextStyle(
-                color: Colors.black
-              ),
-            ),
+    return Platform.isIOS ? CupertinoButton(
+      onPressed: this.buttonFunction,
+      color: Colors.red,
+      child: FittedBox(
+        child: Text(
+            this.buttonLabel,
+          style: TextStyle(
+            color: Colors.black
           ),
-        )
+        ),
       ),
-    ) : Expanded(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Container(
-          height: 40,
-          decoration: BoxDecoration(
-              border: Border.all(
-                  color: Colors.red,
-                  width: 2
-              ),
-              borderRadius: BorderRadius.all(Radius.circular(60))
+    ) : Container(
+      height: 40,
+      decoration: BoxDecoration(
+          border: Border.all(
+              color: Colors.red,
+              width: 2
           ),
-          child: TextButton(
-            onPressed: this.buttonFunction,
-            child: FittedBox(
-              child: Text(
-                this.buttonLabel,
-                style: TextStyle(
-                    color: Colors.redAccent,
-                    fontSize: 18
-                ),
-              ),
+          borderRadius: BorderRadius.all(Radius.circular(60))
+      ),
+      child: TextButton(
+        onPressed: this.buttonFunction,
+        child: FittedBox(
+          child: Text(
+            this.buttonLabel,
+            style: TextStyle(
+                color: Colors.redAccent,
+                fontSize: 18
             ),
           ),
         ),
